@@ -10,7 +10,7 @@ document.addEventListener('mousemove', (e) => {
 const logo = document.getElementById('site-logo');
 if (logo){
   const base = 'assets/logo.jpg';
-  const hover = 'assets/logo-hover.jpg';
+  const hover = 'assets/assets/logo-placehol.der.jpg'; // or whatever file name you want to use
   logo.addEventListener('mouseenter', ()=>{ logo.src = hover; });
   logo.addEventListener('mouseleave', ()=>{ logo.src = base; });
 }
