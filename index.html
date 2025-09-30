@@ -7,10 +7,41 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+
+  <!-- Sticky site header + responsive nav -->
+  <header class="site-header">
+    <a class="logo" href="#home" aria-label="Go to Home">WG</a>
+
+    <!-- Mobile hamburger (CSS-only) -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="hamburger" aria-label="Open menu" title="Menu"></label>
+
+    <nav id="primary-navigation" class="navbar" aria-label="Primary">
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#intro" class="nav-link">Introduction</a></li>
+
+        <li class="nav-item has-submenu">
+          <input type="checkbox" id="work-toggle" class="submenu-toggle" aria-hidden="true" />
+          <a href="#assignments" class="nav-link submenu-parent" aria-haspopup="true">Assignments</a>
+          <label for="work-toggle" class="submenu-caret" aria-label="Toggle Assignments submenu"></label>
+          <ul class="submenu" aria-label="Assignments submenu">
+            <li><a href="#midterm" class="submenu-link">Midterm</a></li>
+            <li><a href="#final" class="submenu-link">Final</a></li>
+            <li><a href="#labs" class="submenu-link">Labs</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li class="nav-item"><a href="#resources" class="nav-link">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <!-- Special effects cursor element -->
   <div id="cursor-dot" aria-hidden="true"></div>
 
-  <div class="container">
+  <div class="container" id="home">
     <header>
       <!-- Include your logo (.jpg) -->
       <img id="site-logo" src="assets/logo.jpg" alt="Site logo" />
@@ -23,11 +54,12 @@
 
     <main>
       <!-- Introduction text + Font color/styles examples -->
-      <section class="section intro">
+      <section class="section intro" id="intro">
         <h2>Introduction</h2>
         <p>Hi! This site will host my <span class="colorful">BIS23</span> assignments and projects. I’m building this page using basic HTML, CSS, and a touch of JavaScript for effects.</p>
+
         <!-- Short Bio + At least one picture/graphic -->
-        <section class="section bio">
+        <section class="section bio" id="bio">
           <div>
             <h2>Short Bio</h2>
             <p>I’m a student learning web fundamentals and digital design. I enjoy building clean, accessible pages and exploring interactive UI patterns. This site will evolve as I add my <span class="emphasis">midterm</span> and <span class="colorful">final</span> work.</p>
@@ -38,8 +70,16 @@
           </figure>
         </section>
 
+        <!-- Placeholder anchors for nav links -->
+        <section id="assignments" hidden></section>
+        <section id="midterm" hidden></section>
+        <section id="final" hidden></section>
+        <section id="labs" hidden></section>
+        <section id="portfolio" hidden></section>
+        <section id="resources" hidden></section>
+
         <!-- Footer for hyperlinks + Copyright -->
-        <section class="footer">
+        <section class="footer" id="resources">
           <small>&copy; All Rights Reserved 2012</small>
           <nav>
             <a href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a>
