@@ -122,9 +122,7 @@ h2{
   z-index: 9999;
 }
 /* font-style examples */
-.example-styles span{
-  margin-right: 10px;
-}
+.example-styles span{ margin-right: 10px; }
 .example-styles .bold{ font-weight:700 }
 .example-styles .italic{ font-style: italic }
 .example-styles .underline{ text-decoration: underline }
@@ -133,6 +131,15 @@ h2{
 /* ==========================
    Responsive Navigation Menu
    ========================== */
+
+/* Hide the nav checkboxes everywhere */
+.nav-toggle,
+.submenu-toggle{
+  position: absolute;
+  left: -9999px;
+}
+
+/* Header shell */
 .site-header{
   position: sticky;
   top: 0;
@@ -153,19 +160,25 @@ h2{
   background-clip: text;
   color: transparent;
 }
-.nav-toggle{ position: absolute; left: -9999px; }
+
+/* Hamburger (hidden on desktop by default) */
 .hamburger{
-  width: 36px; height: 28px; cursor: pointer; margin-left: auto;
+  display: none;            /* hide on desktop */
+  width: 36px; height: 28px;
+  cursor: pointer; margin-left: auto;
   position: relative; flex-shrink: 0;
-  box-shadow: inset 0 -13px 0 0 #fff, inset 0 13px 0 0 #fff;
+  box-shadow: inset 0 -13px 0 0 #fff, inset 0 13px 0 0 #fff; /* middle line */
 }
-.hamburger::before, .hamburger::after{
+.hamburger::before,
+.hamburger::after{
   content: "";
   position: absolute; left: 0; right: 0; height: 3px; background: #fff;
   transition: transform 180ms ease;
 }
 .hamburger::before{ top: 8px; }
 .hamburger::after { top: 18px; }
+
+/* Desktop nav */
 .navbar{ margin-left: auto; }
 .nav-menu{ list-style: none; display: flex; align-items: center; gap: .5rem; }
 .nav-item{ position: relative; }
@@ -182,11 +195,16 @@ h2{
   transition: background 180ms ease, background-size 180ms ease;
 }
 .nav-link:hover{ background-color: #26324f; background-size: 100% 2px; }
-.has-submenu > .submenu-parent{ padding-right: 2rem; }
+
+/* Align “Assignments” like others & place caret neatly */
+.has-submenu > .submenu-parent{ padding-right: 1.2rem; }
 .has-submenu > .submenu-parent::after{
-  content: "▾"; position: absolute; right: .65rem; top: 50%; transform: translateY(-50%);
+  content: "▾";
+  position: absolute; right: .5rem; top: 50%; transform: translateY(-50%);
   font-size: .85rem; color: #94a3b8;
 }
+
+/* Dropdown (desktop) */
 .submenu{
   position: absolute; left: 0; top: calc(100% + .4rem);
   min-width: 220px; list-style: none; background: #1c2541;
@@ -200,11 +218,15 @@ h2{
   border-radius: .6rem; color: #fff; text-decoration: none;
 }
 .submenu-link:hover{ background: #26324f; }
-.has-submenu:hover > .submenu{ opacity: 1; transform: translateY(0); pointer-events: auto; }
+.has-submenu:hover > .submenu,
+.has-submenu:focus-within > .submenu{
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
 
 /* Mobile */
 @media (max-width: 900px){
-  .hamburger{ display: inline-block; }
+  .hamburger{ display: inline-block; } /* show hamburger on mobile */
+  .navbar{ width: 100%; }
   .nav-menu{
     position: absolute; left: 0; right: 0; top: 100%;
     background: #0b132b;
@@ -214,13 +236,20 @@ h2{
     transition: max-height 180ms ease;
   }
   .nav-toggle:checked ~ .navbar .nav-menu{ max-height: 60vh; }
+
+  /* Turn hamburger into X when open */
   .nav-toggle:checked + .hamburger{ box-shadow: none; }
   .nav-toggle:checked + .hamburger::before{ transform: translateY(5px) rotate(45deg); }
   .nav-toggle:checked + .hamburger::after { transform: translateY(-5px) rotate(-45deg); }
+
+  /* Submenu as accordion on mobile */
   .has-submenu{ display: grid; grid-template-columns: 1fr auto; align-items: center; }
-  .submenu{ position: static; display: none; box-shadow: none; padding: 0; opacity: 1; }
-  .submenu-toggle{ position: absolute; left: -9999px; }
-  .submenu-caret{ cursor: pointer; width: 36px; height: 36px; display: inline-grid; place-items: center; }
+  .submenu{
+    position: static; display: none; box-shadow: none; padding: 0; opacity: 1;
+  }
+  .submenu-caret{
+    cursor: pointer; width: 36px; height: 36px; display: inline-grid; place-items: center;
+  }
   .submenu-caret::after{ content: "▸"; color: #94a3b8; transition: transform 180ms ease; }
   .has-submenu .submenu-toggle:checked ~ .submenu{ display: block; }
   .has-submenu .submenu-toggle:checked ~ .submenu-caret::after{ transform: rotate(90deg); color: var(--accent); }
