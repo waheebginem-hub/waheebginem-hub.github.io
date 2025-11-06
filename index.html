@@ -93,8 +93,10 @@
           <label for="gallons">Gallons Used:</label>
           <input type="number" id="gallons" placeholder="Enter gallons of gas used" />
 
-          <button onclick="calculateMPG()">Calculate MPG</button>
+          <!-- ✅ FIXED BUTTON TYPE -->
+          <button type="button" id="calc-btn" onclick="calculateMPG()">Calculate MPG</button>
 
+          <!-- ✅ RESULT OUTPUT -->
           <p id="result" class="result-box"></p>
         </div>
       </section>
@@ -111,6 +113,7 @@
     </main>
   </div>
 
+  <!-- ✅ MAKE SURE SCRIPT IS LINKED AT THE END -->
   <script src="js/main.js"></script>
 </body>
 </html>
