@@ -1,91 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BIS23 — My Web Presence</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIS23 — My Web Presence</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
 
-  <!-- Sticky site header + responsive nav -->
-  <header class="site-header">
-    <a class="logo" href="#home" aria-label="Go to Home">WG</a>
+  <!-- Sticky site header + responsive nav -->
+  <header class="site-header">
+    <a class="logo" href="#home" aria-label="Go to Home">WG</a>
 
-    <!-- Mobile hamburger (CSS-only) -->
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
-    <label for="nav-toggle" class="hamburger" aria-label="Open menu" title="Menu"></label>
+    <!-- Mobile hamburger (CSS-only) -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="hamburger" aria-label="Open menu" title="Menu"></label>
 
-    <nav id="primary-navigation" class="navbar" aria-label="Primary">
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="#intro" class="nav-link">Introduction</a></li>
+    <nav id="primary-navigation" class="navbar" aria-label="Primary">
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#intro" class="nav-link">Introduction</a></li>
 
-        <li class="nav-item has-submenu">
-          <input type="checkbox" id="work-toggle" class="submenu-toggle" aria-hidden="true" />
-          <a href="#assignments" class="nav-link submenu-parent" aria-haspopup="true">Assignments</a>
-          <label for="work-toggle" class="submenu-caret" aria-label="Toggle Assignments submenu"></label>
-          <ul class="submenu" aria-label="Assignments submenu">
-            <li><a href="#midterm" class="submenu-link">Midterm</a></li>
-            <li><a href="#final" class="submenu-link">Final</a></li>
-            <li><a href="#labs" class="submenu-link">Labs</a></li>
-          </ul>
-        </li>
+        <li class="nav-item has-submenu">
+          <input type="checkbox" id="work-toggle" class="submenu-toggle" aria-hidden="true" />
+          <a href="#assignments" class="nav-link submenu-parent" aria-haspopup="true">Assignments</a>
+          <label for="work-toggle" class="submenu-caret" aria-label="Toggle Assignments submenu"></label>
+          <ul class="submenu" aria-label="Assignments submenu">
+            <li><a href="#midterm" class="submenu-link">Midterm</a></li>
+            <li><a href="#final" class="submenu-link">Final</a></li>
+            <li><a href="#labs" class="submenu-link">Labs</a></li>
+          </ul>
+        </li>
 
-        <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
-        <li class="nav-item"><a href="#resources" class="nav-link">Resources</a></li>
-      </ul>
-    </nav>
-  </header>
+        <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li class="nav-item"><a href="#resources" class="nav-link">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Special effects cursor element -->
-  <div id="cursor-dot" aria-hidden="true"></div>
+  <!-- Special effects cursor element -->
+  <div id="cursor-dot" aria-hidden="true"></div>
 
-  <div class="container" id="home">
-    <header>
-      <img id="site-logo" src="assets/logo.jpg" alt="Site logo" />
-      <div class="titlebox">
-        <h1>BIS23 Portfolio <span class="badge">Fall 2025</span></h1>
-        <p class="emphasis">Welcome to my course web space — Midterm &amp; Final projects live here.</p>
-      </div>
-    </header>
+  <div class="container" id="home">
+    <header class="hero">
+      <img id="site-logo" src="assets/logo.jpg" alt="Site logo" />
+      <div class="titlebox">
+        <h1>BIS23 Portfolio <span class="badge">Fall 2025</span></h1>
+        <p class="emphasis">Welcome to my course web space — Midterm &amp; Final projects live here.</p>
+      </div>
+    </header>
 
-    <main>
-      <section class="section intro" id="intro">
-        <h2>Introduction</h2>
-        <p>Hi! This site will host my <span class="colorful">BIS23</span> assignments and projects. I’m building this page using basic HTML, CSS, and a touch of JavaScript for effects.</p>
+    <main>
+      <!-- INTRO SECTION -->
+      <section class="section intro" id="intro">
+        <h2>Introduction</h2>
+        <p>Hi! This site will host my <span class="colorful">BIS23</span> assignments and projects. I’m building this page using basic HTML, CSS, and a touch of JavaScript for effects.</p>
+      </section>
 
-        <section class="section bio" id="bio">
-          <div>
-            <h2>Short Bio</h2>
-            <p>I’m a student learning web fundamentals and digital design. I enjoy building clean, accessible pages and exploring interactive UI patterns. This site will evolve as I add my <span class="emphasis">midterm</span> and <span class="colorful">final</span> work.</p>
-            <p>Skills focus this term: semantic HTML, layout, responsive design, and light JavaScript enhancements (e.g., rollovers and cursor effects).</p>
-          </div>
-          <figure>
-            <img src="assets/profile.jpg" alt="My photo or project graphic" />
-      _   </figure>
-        </section>
+      <!-- BIO SECTION -->
+      <section class="section bio" id="bio">
+        <div>
+          <h2>Short Bio</h2>
+          <p>I’m a student learning web fundamentals and digital design. I enjoy building clean, accessible pages and exploring interactive UI patterns. This site will evolve as I add my <span class="emphasis">midterm</span> and <span class="colorful">final</span> work.</p>
+          <p>Skills focus this term: semantic HTML, layout, responsive design, and light JavaScript enhancements (e.g., rollovers and cursor effects).</p>
+        </div>
+        <figure>
+          <img src="assets/profile.jpg" alt="My photo or project graphic" />
+        </figure>
+      </section>
 
-      _ <!-- Placeholder anchors -->
-        <section id="assignments" hidden></section>
-        <section id="midterm" hidden></section>
-  _     <section id="final" hidden></section>
-        <section id="labs" hidden></section>
-        <section id="portfolio" hidden></section>
-        <section id="resources" hidden></section>
+      <!-- PLACEHOLDER ANCHORS -->
+      <section id="assignments" hidden></section>
+      <section id="midterm" hidden></section>
+      <section id="final" hidden></section>
+      <section id="labs" hidden></section>
+      <section id="portfolio" hidden></section>
 
-        <section class="footer" id="resources">
-          <small>&copy; All Rights Reserved 2012</small>
-          <nav>
-            <a href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a>
-            <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://tympanus.net/codrops/2019/01/31/custom-cursor-effects/" target="_blank" rel="noopener">Cursor Effects (Codrops)</a>
-E         </nav>
-        </section>
-      </section>
-    </main>
-  </div>
+      <!-- FOOTER / RESOURCES -->
+      <footer class="footer" id="resources">
+        <small>&copy; All Rights Reserved 2012</small>
+        <nav>
+          <a href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a>
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://tympanus.net/codrops/2019/01/31/custom-cursor-effects/" target="_blank" rel="noopener">Cursor Effects (Codrops)</a>
+        </nav>
+      </footer>
+    </main>
+  </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
