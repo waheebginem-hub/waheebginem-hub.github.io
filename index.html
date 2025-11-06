@@ -5,15 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BIS23 — My Web Presence</title>
   <link rel="stylesheet" href="css/styles.css" />
-
-  <!-- 
-    Additions for Calculator Widget 
-    (Tailwind for styling, Inter for the font)
-  -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <!-- End Additions -->
-
 </head>
 <body>
 
@@ -71,148 +62,17 @@
             <p>Skills focus this term: semantic HTML, layout, responsive design, and light JavaScript enhancements (e.g., rollovers and cursor effects).</p>
           </div>
           <figure>
-          _ <img src="assets/profile.jpg" alt="My photo or project graphic" />
-          </figure>
+            <img src="assets/profile.jpg" alt="My photo or project graphic" />
+      _   </figure>
         </section>
 
-        <!-- Placeholder anchors -->
+      _ <!-- Placeholder anchors -->
         <section id="assignments" hidden></section>
         <section id="midterm" hidden></section>
-        <section id="final" hidden></section>
-        
-        <!-- 
-          Calculator Widget - Start
-          Copy and paste this entire block into your main portfolio HTML file.
-          
-          REQUIRED: Make sure your main page loads Tailwind CSS in its <head>:
-          <script src="https://cdn.tailwindcss.com"></script>
-        -->
-
-        <!-- 1. Styles for the calculator -->
-        <style>
-            /* We scope this to the calculator ID to avoid
-               messing with your portfolio's other styles.
-            */
-            #mpg-calculator-widget {
-                /* This tells Tailwind's styles to override your
-                   "css/styles.css" file if there's a conflict. */
-                --tw-text-opacity: 1;
-                --tw-bg-opacity: 1;
-                font-family: 'Inter', sans-serif;
-            }
-            #mpg-calculator-widget input[type="number"]:focus {
-                border-color: #3b82f6; /* blue-500 */
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
-                outline: none;
-            }
-            #mpg-calculator-widget #result {
-                transition: all 0.3s ease-in-out;
-            }
-        </style>
-
-        <!-- 2. HTML Structure for the calculator -->
-        <!-- We add 'id="mpg-calculator-widget"' to help scope the styles -->
-        <!-- You can add this section where your <section id="labs" hidden> was -->
-        <section id="labs" class="section">
-          <div id="mpg-calculator-widget" class="bg-white rounded-xl shadow-2xl p-8 w-full max-w-md mx-auto my-12">
-            
-              <!-- Logo/Graphic -->
-              <div class="flex justify-center mb-4">
-                  <!-- UPDATED PATH: Changed to assets/logo.png -->
-                  <img src="assets/logo.png" alt="Logo" class="w-16 h-16 object-contain">
-              </div>
-
-              <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
-                  MPG Calculator
-              </h2>
-
-              <!-- Input Fields -->
-              <div class="space-y-4">
-                  <!-- Miles Traveled Input -->
-                  <div>
-                      <label for="miles" class="block text-sm font-medium text-gray-700 mb-1">
-                          Miles Traveled
-                      </label>
-                      <input 
-                          type="number" 
-                          id="miles"
-                          placeholder="e.g., 350"
-                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900"
-                      >
-                  </div>
-                  
-                  <!-- Gallons Used Input -->
-                  <div>
-                      <label for="gallons" class="block text-sm font-medium text-gray-700 mb-1">
-                          Gallons of Gas Used
-                      </label>
-                      <input 
-                          type="number" 
-                          id="gallons"
-                          placeholder="e.g., 12.5"
-                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900"
-                      >
-                  </div>
-              </div>
-
-              <!-- Calculate Button -->
-              <button id="calculateBtn" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg mt-6 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300">
-                  Calculate
-              </button>
-
-              <!-- Result Display Area -->
-              <div class="mt-6 text-center">
-                  <h3 class="text-lg font-medium text-gray-700">Your car gets:</h3>
-                  <p id="result" class="text-4xl font-extrabold text-gray-800 mt-2 h-12">
-                      <!-- Result will be injected here by JavaScript -->
-                  </p>
-              </div>
-          </div>
-        </section>
-
-        <!-- 3. JavaScript Logic -->
-        <!-- This script is safe to put anywhere, but at the end of the widget is fine -->
-        <script>
-            // To avoid conflicts, we wrap the logic in a function that runs immediately.
-            // This also finds elements *within* the widget, just in case you 
-            // have other elements with the same ID on your page.
-            (function() {
-                const widget = document.getElementById('mpg-calculator-widget');
-                if (!widget) return; // Don't run if the widget isn't on the page
-
-                const milesInput = widget.querySelector('#miles');
-                const gallonsInput = widget.querySelector('#gallons');
-                const calculateBtn = widget.querySelector('#calculateBtn');
-                const resultEl = widget.querySelector('#result');
-
-                calculateBtn.addEventListener('click', () => {
-                    const miles = parseFloat(milesInput.value);
-                    const gallons = parseFloat(gallonsInput.value);
-
-                    resultEl.textContent = '';
-                    resultEl.classList.remove('text-red-500');
-                    resultEl.classList.add('text-gray-800');
-
-                    if (isNaN(miles) || isNaN(gallons) || miles < 0 || gallons <= 0) {
-                        if (gallons === 0) {
-                             resultEl.textContent = 'Gallons cannot be zero.';
-                        } else {
-                             resultEl.textContent = 'Please enter valid numbers.';
-                        }
-                        resultEl.classList.add('text-red-500');
-                        resultEl.classList.remove('text-gray-800');
-                        return;
-                    }
-
-                    const mpg = miles / gallons;
-                    resultEl.textContent = `${mpg.toFixed(1)} MPG`;
-                });
-            })();
-        </script>
-        <!-- Calculator Widget - End -->
-
-
+  _     <section id="final" hidden></section>
+        <section id="labs" hidden></section>
         <section id="portfolio" hidden></section>
+        <section id="resources" hidden></section>
 
         <section class="footer" id="resources">
           <small>&copy; All Rights Reserved 2012</small>
@@ -220,7 +80,7 @@
             <a href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a>
             <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
             <a href="https://tympanus.net/codrops/2019/01/31/custom-cursor-effects/" target="_blank" rel="noopener">Cursor Effects (Codrops)</a>
-          </nav>
+E         </nav>
         </section>
       </section>
     </main>
