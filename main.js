@@ -1,17 +1,17 @@
-// Custom cursor dot that follows the mouse (simple special effect)
+// ==========================
+// Custom Cursor Dot (Special Effect)
+// ==========================
 const dot = document.getElementById('cursor-dot');
 document.addEventListener('mousemove', (e) => {
   if (!dot) return;
   dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
 });
 
-// Simple rollover: swap logo on hover
+// ==========================
+// Logo Hover Swap Effect
+// ==========================
 const logo = document.getElementById('site-logo');
 if (logo) {
-  // Path to the default logo image and hover image.  The hover image lives in
-  // assets/assets/logo-placehol.der.jpg (as stored in your repo), so set the
-  // hover variable accordingly.  When you hover over #site-logo, it will swap
-  // to this image, and revert back on mouse leave.
   const base = 'assets/logo.jpg';
   const hover = 'assets/assets/logo-placehol.der.jpg';
   logo.addEventListener('mouseenter', () => {
@@ -20,4 +20,27 @@ if (logo) {
   logo.addEventListener('mouseleave', () => {
     logo.src = base;
   });
+}
+
+// ==========================
+// Miles Per Gallon Calculator
+// ==========================
+function calculateMPG() {
+  const miles = parseFloat(document.getElementById("miles").value);
+  const gallons = parseFloat(document.getElementById("gallons").value);
+  const result = document.getElementById("result");
+
+  // Validate user input
+  if (isNaN(miles) || isNaN(gallons) || gallons <= 0) {
+    result.textContent = "Please enter valid positive numbers for both fields.";
+    result.style.color = "red";
+    return;
+  }
+
+  // Correct formula (the pseudocode had + instead of /)
+  const milesPerGallon = miles / gallons;
+
+  // Display result, rounded to two decimal places
+  result.textContent = `Your vehicle gets ${milesPerGallon.toFixed(2)} miles per gallon.`;
+  result.style.color = "green";
 }
