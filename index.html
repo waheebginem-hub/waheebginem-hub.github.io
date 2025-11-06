@@ -35,6 +35,7 @@
         </li>
 
         <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li class="nav-item"><a href="#mortgage" class="nav-link">Mortgage Calc</a></li>
         <li class="nav-item"><a href="#resources" class="nav-link">Resources</a></li>
       </ul>
     </nav>
@@ -93,11 +94,36 @@
           <label for="gallons">Gallons Used:</label>
           <input type="number" id="gallons" placeholder="Enter gallons of gas used" />
 
-          <!-- ✅ FIXED BUTTON TYPE -->
           <button type="button" id="calc-btn" onclick="calculateMPG()">Calculate MPG</button>
 
-          <!-- ✅ RESULT OUTPUT -->
           <p id="result" class="result-box"></p>
+        </div>
+      </section>
+
+      <!-- === MORTGAGE CALCULATOR SECTION === -->
+      <section id="mortgage" class="section portfolio">
+        <h2>Mortgage Calculator</h2>
+        <p>This application calculates your estimated monthly mortgage payment based on loan amount, interest rate, and years.</p>
+
+        <div id="mortgage-calculator" class="calc-box">
+          <img src="assets/logo.jpg" alt="Calculator Logo" class="calc-logo" />
+          <h3>Home Mortgage Calculator</h3>
+
+          <form name="Form1">
+            <label for="Amount">Mortgage Amount ($):</label>
+            <input type="number" id="Amount" name="Amount" placeholder="Enter amount" required />
+
+            <label for="Rate">Annual Interest Rate (%):</label>
+            <input type="number" id="Rate" name="Rate" placeholder="e.g. 6.5" step="0.01" required />
+
+            <label for="Years">Years:</label>
+            <input type="number" id="Years" name="Years" placeholder="e.g. 30" required />
+
+            <button type="button" onclick="mortCalc(this.form)">Calculate Payment</button>
+
+            <label for="Payment">Monthly Payment:</label>
+            <input type="text" id="Payment" name="Payment" readonly />
+          </form>
         </div>
       </section>
 
@@ -113,7 +139,8 @@
     </main>
   </div>
 
-  <!-- ✅ MAKE SURE SCRIPT IS LINKED AT THE END -->
+  <!-- ✅ JAVASCRIPT FILES -->
+  <script src="js/calculator.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
