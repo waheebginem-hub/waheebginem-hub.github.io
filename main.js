@@ -1,8 +1,8 @@
 // ==========================
 // Custom Cursor Dot (Special Effect)
 // ==========================
-const dot = document.getElementById('cursor-dot');
-document.addEventListener('mousemove', (e) => {
+const dot = document.getElementById("cursor-dot");
+document.addEventListener("mousemove", (e) => {
   if (!dot) return;
   dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
 });
@@ -10,14 +10,14 @@ document.addEventListener('mousemove', (e) => {
 // ==========================
 // Logo Hover Swap Effect
 // ==========================
-const logo = document.getElementById('site-logo');
+const logo = document.getElementById("site-logo");
 if (logo) {
-  const base = 'assets/logo.jpg';
-  const hover = 'assets/assets/logo-placehol.der.jpg';
-  logo.addEventListener('mouseenter', () => {
+  const base = "assets/logo.jpg";
+  const hover = "assets/assets/logo-placehol.der.jpg";
+  logo.addEventListener("mouseenter", () => {
     logo.src = hover;
   });
-  logo.addEventListener('mouseleave', () => {
+  logo.addEventListener("mouseleave", () => {
     logo.src = base;
   });
 }
@@ -42,8 +42,6 @@ function calculateMPG() {
   result.style.color = "green";
 }
 
-
-
 // ==========================
 // IMAGE SLIDER (Auto + Controls)
 // ==========================
@@ -55,25 +53,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = slider.querySelectorAll(".slider-slide");
   const nextBtn = slider.querySelector(".next");
   const prevBtn = slider.querySelector(".prev");
-  const dotsContainer = document.getElementById("slider-dots");
+  const dotsContainer = slider.querySelector(".slider-dots");
+
+  if (!track || slides.length === 0 || !dotsContainer) return;
 
   let currentIndex = 0;
   const slideCount = slides.length;
   let autoTimer = null;
 
-  // Create dots using let + for loop (required by assignment)
+  // Create dots with let + for
   for (let i = 0; i < slideCount; i++) {
-    const dot = document.createElement("button");
-    dot.className = "slider-dot";
-    dot.setAttribute("type", "button");
-    dot.dataset.index = i;
-    dotsContainer.appendChild(dot);
+    const d = document.createElement("button");
+    d.className = "slider-dot";
+    d.type = "button";
+    d.dataset.index = i;
+    dotsContainer.appendChild(d);
   }
 
   const dots = dotsContainer.querySelectorAll(".slider-dot");
 
   function updateDots(index) {
-    dots.forEach((dot) => dot.classList.remove("active"));
+    dots.forEach((d) => d.classList.remove("active"));
     if (dots[index]) dots[index].classList.add("active");
   }
 
@@ -116,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Button events
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
       stopAutoPlay();
@@ -133,21 +132,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Dot click events
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      const index = parseInt(dot.dataset.index, 10);
+  dots.forEach((d) => {
+    d.addEventListener("click", () => {
+      const index = parseInt(d.dataset.index, 10);
       stopAutoPlay();
       goToSlide(index);
       startAutoPlay();
     });
   });
 
-  // Pause on hover
   slider.addEventListener("mouseenter", stopAutoPlay);
   slider.addEventListener("mouseleave", startAutoPlay);
 
-  // Initialize
   showSlide(0);
   startAutoPlay();
 });
