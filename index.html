@@ -14,7 +14,6 @@
   <header class="site-header">
     <a class="logo" href="#home" aria-label="Go to Home">WG</a>
 
-    <!-- Mobile hamburger (CSS-only) -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
     <label for="nav-toggle" class="hamburger" aria-label="Open menu" title="Menu"></label>
 
@@ -36,16 +35,12 @@
 
         <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
         <li class="nav-item"><a href="#mortgage" class="nav-link">Mortgage Calc</a></li>
-
-        <!-- NEW: link to Invoice Calculator page -->
         <li class="nav-item"><a href="invoice.html" class="nav-link">Invoice Calc</a></li>
-
         <li class="nav-item"><a href="#resources" class="nav-link">Resources</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Special effects cursor element -->
   <div id="cursor-dot" aria-hidden="true"></div>
 
   <div class="container" id="home">
@@ -58,123 +53,91 @@
     </header>
 
     <main>
-      <!-- INTRO SECTION -->
       <section class="section intro" id="intro">
         <h2>Introduction</h2>
-        <p>Hi! This site will host my <span class="colorful">BIS23</span> assignments and projects. I’m building this page using basic HTML, CSS, and a touch of JavaScript for effects.</p>
+        <p>Hi! This site will host my <span class="colorful">BIS23</span> assignments and projects.</p>
       </section>
 
-      <!-- BIO SECTION -->
       <section class="section bio" id="bio">
         <div>
           <h2>Short Bio</h2>
-          <p>I’m a student learning web fundamentals and digital design. I enjoy building clean, accessible pages and exploring interactive UI patterns. This site will evolve as I add my <span class="emphasis">midterm</span> and <span class="colorful">final</span> work.</p>
-          <p>Skills focus this term: semantic HTML, layout, responsive design, and light JavaScript enhancements (e.g., rollovers and cursor effects).</p>
+          <p>I’m a student learning web fundamentals and digital design.</p>
         </div>
         <figure>
           <img src="assets/profile.jpg" alt="My photo or project graphic" />
         </figure>
       </section>
 
-      <!-- IMAGE SLIDER SECTION -->
       <section class="section slider-section" id="gallery">
         <h2>Photo Gallery</h2>
-        <p>A simple auto-playing image slider built with JavaScript, HTML, and CSS.</p>
-
         <div class="image-slider" id="image-slider">
           <div class="slider-window">
             <div class="slider-track">
-              <div class="slider-slide">
-                <img src="assets/IMG_0205.JPG" alt="Slide 1" />
-              </div>
-              <div class="slider-slide">
-                <img src="assets/IMG_0208.jpg" alt="Slide 2" />
-              </div>
-              <div class="slider-slide">
-                <img src="assets/IMG_0206.jpg" alt="Slide 3" />
-              </div>
-              <div class="slider-slide">
-                <img src="assets/IMG_0207.JPG" alt="Slide 4" />
-              </div>
+              <div class="slider-slide"><img src="assets/IMG_0205.JPG" alt="Slide 1" /></div>
+              <div class="slider-slide"><img src="assets/IMG_0208.jpg" alt="Slide 2" /></div>
+              <div class="slider-slide"><img src="assets/IMG_0206.jpg" alt="Slide 3" /></div>
+              <div class="slider-slide"><img src="assets/IMG_0207.JPG" alt="Slide 4" /></div>
             </div>
           </div>
-
-          <button class="slider-btn prev" aria-label="Previous slide">&#10094;</button>
-          <button class="slider-btn next" aria-label="Next slide">&#10095;</button>
-
+          <button class="slider-btn prev">&#10094;</button>
+          <button class="slider-btn next">&#10095;</button>
           <div class="slider-dots" id="slider-dots"></div>
         </div>
       </section>
 
-      <!-- PLACEHOLDER ANCHORS -->
-      <section id="assignments" hidden></section>
-      <section id="midterm" hidden></section>
-      <section id="final" hidden></section>
-      <section id="labs" hidden></section>
-
-      <!-- PORTFOLIO SECTION WITH MPG CALCULATOR -->
       <section id="portfolio" class="section portfolio">
         <h2>My Portfolio</h2>
-        <p>This project demonstrates a front-end calculator that computes miles per gallon (MPG) based on user input.</p>
 
         <div id="mpg-calculator" class="calc-box">
-          <img src="assets/logo.jpg" alt="Calculator Logo" class="calc-logo" />
-
           <h3>Miles Per Gallon Calculator</h3>
 
           <label for="miles">Miles Traveled:</label>
-          <input type="number" id="miles" placeholder="Enter miles traveled" />
+          <input type="number" id="miles" />
 
           <label for="gallons">Gallons Used:</label>
-          <input type="number" id="gallons" placeholder="Enter gallons of gas used" />
+          <input type="number" id="gallons" />
 
-          <button type="button" id="calc-btn" onclick="calculateMPG()">Calculate MPG</button>
-
-          <p id="result" class="result-box"></p>
+          <button type="button" onclick="calculateMPG()">Calculate MPG</button>
+          <p id="result"></p>
         </div>
       </section>
 
-      <!-- MORTGAGE CALCULATOR SECTION -->
       <section id="mortgage" class="section portfolio">
         <h2>Mortgage Calculator</h2>
-        <p>This application calculates your estimated monthly mortgage payment based on loan amount, interest rate, and years.</p>
 
         <div id="mortgage-calculator" class="calc-box">
-          <img src="assets/logo.jpg" alt="Calculator Logo" class="calc-logo" />
           <h3>Home Mortgage Calculator</h3>
 
           <form name="Form1">
-            <label for="Amount">Mortgage Amount ($):</label>
-            <input type="number" id="Amount" name="Amount" placeholder="Enter amount" required />
+            <label>Mortgage Amount ($):</label>
+            <input type="number" id="Amount" name="Amount" />
 
-            <label for="Rate">Annual Interest Rate (%):</label>
-            <input type="number" id="Rate" name="Rate" placeholder="e.g. 6.5" step="0.01" required />
+            <label>Annual Interest Rate (%):</label>
+            <input type="number" id="Rate" name="Rate" step="0.01" />
 
-            <label for="Years">Years:</label>
-            <input type="number" id="Years" name="Years" placeholder="e.g. 30" required />
+            <label>Years:</label>
+            <input type="number" id="Years" name="Years" />
 
-            <button type="button" onclick="mortCalc(this.form)">Calculate Payment</button>
+            <button type="button" onclick="mortCalc(this.form)">Calculate</button>
 
-            <label for="Payment">Monthly Payment:</label>
+            <label>Monthly Payment:</label>
             <input type="text" id="Payment" name="Payment" readonly />
           </form>
         </div>
       </section>
 
-      <!-- FOOTER / RESOURCES -->
       <footer class="footer" id="resources">
         <small>&copy; All Rights Reserved 2012</small>
         <nav>
-          <a href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a>
-          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://tympanus.net/codrops/2019/01/31/custom-cursor-effects/" target="_blank" rel="noopener">Cursor Effects (Codrops)</a>
+          <a href="https://www.w3schools.com" target="_blank">W3Schools</a>
+          <a href="https://github.com" target="_blank">GitHub</a>
         </nav>
       </footer>
     </main>
   </div>
 
-  <!-- JavaScript -->
   <script src="js/calculator.js"></script>
   <script src="js/main.js"></script>
+
 </body>
 </html>
