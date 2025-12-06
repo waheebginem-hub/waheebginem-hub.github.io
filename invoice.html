@@ -1,1 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Invoice Calculator | WG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --wg-navy: #0d2b4d;
+      --wg-navy-light: #204a7c;
+      --wg-accent: #1e90ff;
+      --wg-bg: #f4f6fb;
+      --wg-border: #d3d8e3;
+      --wg-text: #222;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+    }
+
+    body {
+      background: var(--wg-bg);
+      color: var(--wg-text);
+    }
+
+    /* Top nav similar to GitHub page */
+    .top-nav {
+      background: var(--wg-navy);
+      color: #fff;
+      padding: 0.75rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: #e3e9f7;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--wg-accent);
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Invoice container */
+    .page {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .invoice-header-banner {
+      background: linear-gradient(
+          115deg,
+          rgba(13, 43, 77, 0.9),
+          rgba(32, 74, 124, 0.95)
+        ),
+        url("https://images.pexels.com/photos/265129/pexels-photo-265129.jpeg?auto=compress&cs=tinysrgb&w=1200")
+          center/cover no-repeat;
+      color: #fff;
+      padding: 1.75rem 2.5rem 1.5rem;
+    }
+
+    .invoice-header-banner h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .invoice-header-banner p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .invoice-meta {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem 1rem;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--wg-border);
+    }
+
+    .invoice-meta strong {
+      font-size: 1.1rem;
+      letter-spacing: 0.03em;
+    }
+
+    .invoice-meta span.small-label {
+      display: block;
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 0.1rem;
+    }
+
+    .invoice-main-info {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 2rem;
+      padding: 0.75rem 2.5rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .invoice-main-info h3 {
+      font-size: 1rem;
+      color: var(--wg-navy);
+      margin-bottom: 0.35rem;
+    }
+
+    .muted {
+      color: #666;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .invoice-main-info textarea,
+    .invoice-main-info input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--wg-border);
+      border-radius: 4px;
+      padding: 0.4rem 0.5rem;
+      margin-top: 0.25rem;
+      font-size: 0.85rem;
+      resize: vertical;
+    }
+
+    /* Items table */
+    .items-section {
+      padding: 0 2.5rem 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    thead {
+      background: var(--wg-navy);
+      color: #fff;
+    }
+
+    th,
+    td {
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--wg-border);
+    }
+
+    th {
+      text-align: left;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f7f8fc;
+    }
+
+    .item-desc-input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 0.88rem;
+      background: transparent;
+    }
+
+    .amount-input {
+      width: 100%;
+      text-align: right;
+      border: none;
+      outline: none;
+      font-size: 0.88rem;
+      background: transparent;
+    }
+
+    .amount-input::placeholder {
+      color: #aaa;
+      text-align: right;
+    }
+
+    /* Totals */
+    .totals-row {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr;
+      padding: 1.5rem 2.5rem 1.25rem;
+      gap: 1.5rem;
+    }
+
+    .totals-notes {
+      font-size: 0.8rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .totals-card {
+      border: 1px solid var(--wg-border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .totals-card-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      border-bottom: 1px solid var(--wg-border);
+      padding: 0.55rem 0.75rem;
+      font-size: 0.87rem;
+      align-items: center;
+    }
+
+    .totals-card-row:last-child {
+      border-bottom: none;
+    }
+
+    .totals-label {
+      color: #555;
+    }
+
+    .totals-value {
+      text-align: right;
+    }
+
+    .readonly-box {
+      background: #f7f9ff;
+      border-radius: 3px;
+      padding: 0.35rem 0.5rem;
+      font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: 0.87rem;
+    }
+
+    .total-highlight {
+      background: var(--wg-navy);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .totals-card-row.total-highlight .total-label-main {
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .text-input-number {
+      width: 100%;
+      border-radius: 3px;
+      border: 1px solid var(--wg-border);
+      padding: 0.3rem 0.4rem;
+      font-size: 0.86rem;
+      text-align: right;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 0 2.5rem 1.75rem;
+      font-size: 0.8rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .footer strong {
+      color: var(--wg-navy);
+    }
+
+    .small-print {
+      margin-top: 0.75rem;
+    }
+
+    @media (max-width: 720px) {
+      .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding-inline: 1.2rem;
+      }
+
+      .page {
+        margin: 1rem;
+      }
+
+      .invoice-meta,
+      .invoice-main-info,
+      .items-section,
+      .totals-row,
+      .footer {
+        padding-inline: 1.2rem;
+      }
+
+      .invoice-main-info {
+        grid-template-columns: 1fr;
+      }
+
+      .totals-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- WG-style nav -->
+  <header class="top-nav">
+    <div class="logo">
+      <div class="logo-badge">WG</div>
+      <span>BIS23 · Invoice Calc</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="mortgage.html">Mortgage Calc</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- Banner / company info -->
+    <section class="invoice-header-banner">
+      <h1>Company Name</h1>
+      <p>
+        Address, City, ST, ZIP Code · Phone Number · Email
+      </p>
+    </section>
+
+    <!-- Invoice meta -->
+    <section class="invoice-meta">
+      <div>
+        <span class="small-label">Invoice #</span>
+        <strong><input type="text" id="invoiceNumber" value="100" /></strong>
+      </div>
+      <div style="text-align: right;">
+        <span class="small-label">Date</span>
+        <input type="date" id="invoiceDate" />
+      </div>
+    </section>
+
+    <!-- Bill To / For -->
+    <section class="invoice-main-info">
+      <div>
+        <h3>Bill To</h3>
+        <textarea
+          rows="4"
+          placeholder="Client Name&#10;Company&#10;Address, City, ST, ZIP Code&#10;Phone"
+        ></textarea>
+      </div>
+      <div>
+        <h3>For</h3>
+        <textarea
+          rows="4"
+          placeholder="Project / Product Description&#10;Service period or notes"
+        ></textarea>
+        <p class="muted" style="margin-top: 0.4rem;">
+          Tip: You can reuse this form for any future project—just update the
+          description and line items.
+        </p>
+      </div>
+    </section>
+
+    <!-- Items table -->
+    <section class="items-section">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 70%;">Item Description</th>
+            <th style="width: 30%; text-align: right;">Amount ($)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input
+                class="item-desc-input"
+                type="text"
+                placeholder="Design work / consulting hours"
+              />
+            </td>
+            <td>
+              <input
+                class="amount-input item-amount"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="0.00"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                class="item-desc-input"
+                type="text"
+                placeholder="Development / implementation"
+              />
+            </td>
+            <td>
+              <input
+                class="amount-input item-amount"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="0.00"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                class="item-desc-input"
+                type="text"
+                placeholder="Maintenance / support"
+              />
+            </td>
+            <td>
+              <input
+                class="amount-input item-amount"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="0.00"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                class="item-desc-input"
+                type="text"
+                placeholder="Additional service"
+              />
+            </td>
+            <td>
+              <input
+                class="amount-input item-amount"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="0.00"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Totals -->
+    <section class="totals-row">
+      <div class="totals-notes">
+        <p><strong>Payment Instructions</strong></p>
+        <p class="small-print">
+          Make all checks payable to <strong>Company Name</strong>.
+        </p>
+
+        <p class="small-print">
+          If you have any questions concerning this invoice, use the following
+          contact information:
+          <br />
+          Contact Name · Phone Number · Email
+        </p>
+
+        <p class="small-print" style="margin-top: 0.5rem;">
+          Thank you for your business!
+        </p>
+      </div>
+
+      <div class="totals-card">
+        <div class="totals-card-row">
+          <div class="totals-label">Subtotal</div>
+          <div class="totals-value">
+            <div id="subtotal" class="readonly-box">$0.00</div>
+          </div>
+        </div>
+
+        <div class="totals-card-row">
+          <div class="totals-label">Tax Rate (%)</div>
+          <div class="totals-value">
+            <input
+              id="taxRate"
+              class="text-input-number"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="0"
+            />
+          </div>
+        </div>
+
+        <div class="totals-card-row">
+          <div class="totals-label">Other Costs</div>
+          <div class="totals-value">
+            <input
+              id="otherCosts"
+              class="text-input-number"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+
+        <div class="totals-card-row total-highlight">
+          <div class="totals-label total-label-main">Total Cost</div>
+          <div class="totals-value">
+            <span id="totalCost">$0.00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer text -->
+    <section class="footer">
+      <p>
+        This invoice calculator form was built with basic HTML, CSS, and
+        JavaScript. You can copy and adapt it for future BIS23 projects or your
+        portfolio.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    function formatMoney(value) {
+      return "$" + value.toFixed(2);
+    }
+
+    function calculateInvoice() {
+      const amountInputs = document.querySelectorAll(".item-amount");
+      let subtotal = 0;
+
+      amountInputs.forEach((input) => {
+        const raw = parseFloat(input.value);
+        if (!isNaN(raw)) {
+          subtotal += raw;
+        }
+      });
+
+      const taxRateInput = document.getElementById("taxRate");
+      const otherCostsInput = document.getElementById("otherCosts");
+
+      const taxRate = parseFloat(taxRateInput.value) || 0;
+      const otherCosts = parseFloat(otherCostsInput.value) || 0;
+
+      const taxAmount = subtotal * (taxRate / 100);
+      const total = subtotal + taxAmount + otherCosts;
+
+      document.getElementById("subtotal").textContent = formatMoney(subtotal);
+      document.getElementById("totalCost").textContent = formatMoney(total);
+    }
+
+    document
+      .querySelectorAll(".item-amount")
+      .forEach((input) =>
+        input.addEventListener("input", calculateInvoice)
+      );
+    document
+      .getElementById("taxRate")
+      .addEventListener("input", calculateInvoice);
+    document
+      .getElementById("otherCosts")
+      .addEventListener("input", calculateInvoice);
+
+    calculateInvoice();
+  </script>
+</body>
+</html>
