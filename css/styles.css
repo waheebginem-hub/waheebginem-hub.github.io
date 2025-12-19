@@ -37,7 +37,6 @@ header .titlebox h1{
   letter-spacing:.5px;
 }
 header .titlebox p{ margin:0;color:var(--muted) }
-
 main{ padding: 24px 0 }
 .section{
   background:#fff;
@@ -127,18 +126,15 @@ h2{
 .example-styles .italic{ font-style: italic }
 .example-styles .underline{ text-decoration: underline }
 .example-styles .colored{ color: #dc2626 }
-
 /* ==========================
    Responsive Navigation Menu
    ========================== */
-
 /* Hide the nav checkboxes everywhere */
 .nav-toggle,
 .submenu-toggle{
   position: absolute;
   left: -9999px;
 }
-
 /* Header shell */
 .site-header{
   position: sticky;
@@ -160,7 +156,6 @@ h2{
   background-clip: text;
   color: transparent;
 }
-
 /* Hamburger (hidden on desktop by default) */
 .hamburger{
   display: none;
@@ -177,7 +172,6 @@ h2{
 }
 .hamburger::before{ top: 8px; }
 .hamburger::after { top: 18px; }
-
 /* Desktop nav */
 .navbar{ margin-left: auto; }
 .nav-menu{ list-style: none; display: flex; align-items: center; gap: .5rem; }
@@ -195,15 +189,13 @@ h2{
   transition: background 180ms ease, background-size 180ms ease;
 }
 .nav-link:hover{ background-color: #26324f; background-size: 100% 2px; }
-
-/* Align “Assignments” like others & place caret neatly */
+/* Align "Assignments" like others & place caret neatly */
 .has-submenu > .submenu-parent{ padding-right: 1.2rem; }
 .has-submenu > .submenu-parent::after{
   content: "▾";
   position: absolute; right: .5rem; top: 50%; transform: translateY(-50%);
   font-size: .85rem; color: #94a3b8;
 }
-
 /* Dropdown (desktop) */
 .submenu{
   position: absolute; left: 0; top: calc(100% + .4rem);
@@ -222,7 +214,6 @@ h2{
 .has-submenu:focus-within > .submenu{
   opacity: 1; transform: translateY(0); pointer-events: auto;
 }
-
 /* Mobile */
 @media (max-width: 900px){
   .hamburger{ display: inline-block; }
@@ -239,7 +230,6 @@ h2{
   .nav-toggle:checked + .hamburger{ box-shadow: none; }
   .nav-toggle:checked + .hamburger::before{ transform: translateY(5px) rotate(45deg); }
   .nav-toggle:checked + .hamburger::after { transform: translateY(-5px) rotate(-45deg); }
-
   .has-submenu{ display: grid; grid-template-columns: 1fr auto; align-items: center; }
   .submenu{
     position: static; display: none; box-shadow: none; padding: 0; opacity: 1;
@@ -251,7 +241,6 @@ h2{
   .has-submenu .submenu-toggle:checked ~ .submenu{ display: block; }
   .has-submenu .submenu-toggle:checked ~ .submenu-caret::after{ transform: rotate(90deg); color: var(--accent); }
 }
-
 /* ==========================
    Miles Per Gallon Calculator
    ========================== */
@@ -265,18 +254,15 @@ h2{
   box-shadow: 0 4px 12px rgba(124,58,237,0.1);
   border: 1px solid #ececff;
 }
-
 .calc-logo {
   width: 80px;
   border-radius: 50%;
   margin-bottom: 0.5em;
 }
-
 .calc-box h3 {
   color: var(--accent-2);
   margin-bottom: 0.75em;
 }
-
 .calc-box label {
   display: block;
   text-align: left;
@@ -284,7 +270,6 @@ h2{
   font-weight: 600;
   color: var(--muted);
 }
-
 .calc-box input {
   width: 90%;
   padding: 0.6em;
@@ -293,7 +278,6 @@ h2{
   border: 1px solid #ccc;
   font-size: 1em;
 }
-
 .calc-box button {
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   color: white;
@@ -304,32 +288,26 @@ h2{
   font-size: 1em;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
-
 .calc-box button:hover {
   opacity: 0.9;
   transform: scale(1.03);
 }
-
 .result-box {
   margin-top: 1em;
   font-weight: 700;
   color: var(--accent);
 }
-
 /* ==========================
    Image Slider
    ========================== */
-
 .slider-section h2 {
   margin-bottom: 0.5rem;
 }
-
 .slider-section p {
   margin-top: 0;
   margin-bottom: 1rem;
   color: var(--muted);
 }
-
 .image-slider {
   position: relative;
   overflow: hidden;
@@ -337,33 +315,28 @@ h2{
   border: 1px solid #e5e7eb;
   background: #020617;
 }
-
 /* Keep slider height under control */
 .slider-window {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
-
 .slider-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
   height: 100%;
 }
-
 .slider-slide {
   min-width: 100%;
   flex-shrink: 0;
   height: 100%;
 }
-
 .slider-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 /* Prev / Next buttons */
 .slider-btn {
   position: absolute;
@@ -382,20 +355,16 @@ h2{
   transition: background 0.15s ease, transform 0.15s ease;
   z-index: 2;
 }
-
 .slider-btn:hover {
   background: rgba(15,23,42,0.95);
   transform: translateY(-50%) scale(1.05);
 }
-
 .slider-btn.prev {
   left: 12px;
 }
-
 .slider-btn.next {
   right: 12px;
 }
-
 /* Dots */
 .slider-dots {
   display: flex;
@@ -404,7 +373,6 @@ h2{
   padding: 8px 0 6px;
   background: rgba(15,23,42,0.9);
 }
-
 .slider-dot {
   width: 10px;
   height: 10px;
@@ -414,11 +382,9 @@ h2{
   cursor: pointer;
   padding: 0;
 }
-
 .slider-dot.active {
   background: var(--accent);
 }
-
 /* Mobile tweaks */
 @media (max-width: 600px) {
   .slider-btn {
@@ -426,4 +392,50 @@ h2{
     height: 30px;
     font-size: 16px;
   }
+}
+
+/* ==========================
+   Social News Program Section
+   ========================== */
+.social-news-box {
+  max-width: 500px;
+  margin: 2em auto;
+  padding: 2em;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.social-news-box h3 {
+  margin: 0 0 0.5em 0;
+  font-size: 1.8em;
+}
+
+.social-news-box p {
+  margin: 0 0 1.5em 0;
+  opacity: 0.95;
+}
+
+.social-news-btn {
+  background: white;
+  color: #667eea;
+  padding: 0.8em 2em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.social-news-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.social-news-btn:active {
+  transform: translateY(0);
 }
